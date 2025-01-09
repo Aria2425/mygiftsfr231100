@@ -23,21 +23,14 @@
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
-            fetch('https://api.logsnag.com/v1/log', {
+            fetch('https://hook.eu2.make.com/0bl1nxqure1txkufw855742otmc3varl', { // Replace with your Make webhook URL
                 method: 'POST',
-                headers: {
-                    'Authorization': '34105985be6cfd038890f52d53998ed4', // Replace with your actual API key
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    project: 'Visitor Logs', // Replace with your LogSnag project name
-                    channel: 'Visitor IPs', // Replace with your LogSnag channel
-                    event: 'New Visitor',
-                    description: `IP Address: ${data.ip}`
-                })
-            }).catch(error => console.error('Error logging to LogSnag:', error));
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ip: data.ip, timestamp: new Date().toISOString() })
+            });
         })
-        .catch(error => console.error('Error fetching IP:', error));
+        .catch(error => console.error('Error logging IP:', error));
 </script>
+
 
 </html>
