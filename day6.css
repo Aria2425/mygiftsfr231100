@@ -1,0 +1,467 @@
+
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #f90064, #ffb6c1, #ffd2e4, #ff85b6, #ff85a2);
+    background-size: 300% 300%;
+    animation: gradient 8s ease infinite;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 120vh; /* Increased for more vertical scrolling */
+    padding-bottom: 20px;
+    overflow-x: hidden; /* Remove horizontal scrolling */
+    position: relative;
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    width: 100%; /* Ensure it spans the entire width */
+}
+
+/* Header Marquee */
+header h1 {
+    font-size: 18px;
+    font-weight: bold;
+    animation: marquee 15s linear infinite;
+    white-space: nowrap;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Menu Button Positioned at Top Left, Vertically Centered */
+.menu-link {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-50%); /* Vertically center the button */
+    font-weight: bold;
+}
+
+/* Huge Text for the Title */
+.huge-text {
+    position: absolute;
+    top: 7%; /* Reduced space between the main text and audio player */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 72px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 999; /* Keep behind the header */
+    letter-spacing: 4px;
+    white-space: nowrap;
+    transition: font-size 0.3s ease;
+}
+
+/* Hover effect for main text */
+.huge-text:hover {
+    font-size: 80px; /* Slightly bigger on hover */
+}
+
+/* Audio Player Section - Not Fixed at the Top */
+.audio-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Change from fixed to relative */
+    top: 110px; /* Adjust to be just below header */
+    left: 10%;
+    background: rgba(0, 0, 0, 0.6); /* Translucent black */
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000; /* Keep it above other content */
+}
+
+.audio-player:hover {
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.8); /* Slightly darker on hover */
+}
+
+/* Audio Image Display */
+.audio-display img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Audio Player Controls */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.play-button, .other-button {
+    background: #ff85b6;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.play-button:hover, .other-button:hover {
+    transform: scale(1.2);
+    background: #f90064;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    margin-top: 15px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+    outline: none;
+    overflow: hidden;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #ff85b6;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.progress-bar::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #ff85b6;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/* Cute Window */
+.cute-window {
+    position: absolute; /* Make the window absolute so it can move independently */
+    top: -300px; /* Default position, can be adjusted */
+    left: 65%; /* Default position, can be adjusted */
+    transform: translateX(-50%); /* Centers the window horizontally */
+    width: 650px; /* Width is fixed */
+    background: rgba(0, 0, 0, 0.6); /* Translucent black background */
+    border-radius: 10px;
+    overflow: hidden; /* Hide anything outside the container */
+    z-index: 1000; /* Keep it above other elements */
+    
+    /* Create a height-to-width ratio of 60% */
+    padding-top: 30%; /* Height is 60% of the width */
+    position: relative; /* To allow children to be positioned inside */
+    transition: transform 0.3s ease, background 0.3s ease; /* Smooth transition for scaling and background */
+}
+
+/* Hover effect to enlarge the window and darken the background */
+.cute-window:hover {
+    transform: translateX(-50%) scale(1.1); /* Scale the window up by 10% */
+    background: rgba(0, 0, 0, 0.8)/* Darker background on hover */
+}
+
+/* Cute Window Header and Body (adjust their position within the container) */
+.cute-window-header, .cute-window-body {
+    position: absolute; /* Position inside the container */
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Cute Window Header */
+.cute-window-header {
+    top: 0;
+    background-color: #ff85b6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Cute Window Body - Allows vertical scrolling */
+/* Cute Window Body - Allows vertical scrolling */
+.cute-window-body {
+    top: 50px; /* Ensure body starts below the header */
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add space for scrollbar */
+    max-height: calc(100% - 50px); /* Account for the header height */
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+
+/* The calendar-day box */
+.calendar-day {
+    background-color: rgba(0, 0, 0, 0.6); /* Translucent black background */
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 180px;  /* Adjusted box width */
+    height: 220px; /* Increased height for the button space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Space between calendar date and button */
+    padding: 10px;
+    text-align: center;
+    transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+    position: relative; /* Allow absolute positioning of child elements inside */
+}
+
+/* Button inside Calendar Day Box */
+.next-day-btn {
+    padding: 10px;
+    background-color: #ffb6c1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Space between calendar date and button */
+}
+
+.next-day-btn:hover {
+    background-color: #ff88a8; /* Darker pink on hover */
+}
+
+/* The calendar-day content (date) */
+.calendar-day span.day-date {
+    font-size: 60px; /* Make the date numbers much bigger */
+    font-weight: bold;
+    color: #ffb6c1; /* Date text color */
+}
+
+/* Hover effect for buttons */
+.cute-button:hover {
+    transform: scale(1.1); /* Slightly enlarge button on hover */
+    background-color: #f90064; /* Change to darker pink on hover */
+}
+/* Add dot container */
+
+/* Dot container - position absolutely */
+.dot-container {
+    position: absolute;
+    top: 50%; /* Vertically center the dots */
+    right: 10px; /* Position dots near the right edge */
+    transform: translateY(-50%); /* Adjust for perfect vertical centering */
+    display: flex;
+    gap: 6px; /* Space between dots */
+}
+
+/* Style for individual dots */
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for dots */
+.dot:hover {
+    background-color: #cccccc; /* Light gray on hover */
+}
+/* Inner box for the quiz */
+.inner-box {
+    position: absolute; /* Positioned relative to the cute-window */
+    top: 10px; /* Small boundary from the top */
+    left: 10px; /* Small boundary from the left */
+    right: 10px; /* Small boundary from the right */
+    bottom: 10px; /* Small boundary from the bottom */
+    background-color: #ffd2e4; /* Light background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2); /* Slight inner shadow for depth */
+    overflow-y: auto; /* Scrollable content */
+    padding: 20px; /* Inner padding for content */
+    color: #333; /* Dark text color for readability */
+    font-size: 16px; /* Default font size */
+}
+
+.cute-button {
+    background-color: #ff85b6;
+    color: white;
+    padding: 10px 30px; /* Adjusted for balanced spacing */
+    border-radius: 6px; /* Slightly rounded for a clean look */
+    font-size: 16px; /* Slightly larger for better readability */
+    font-weight: bold; /* Makes the text more prominent */
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    border: none; /* Removes any default browser styling */
+    display: inline-block; /* Ensures consistent layout */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+
+
+/* Hover effect for buttons */
+.cute-button:hover {
+    transform: scale(1.1); /* Slightly enlarge button on hover */
+    background-color: #f90064; /* Change to darker pink on hover */
+}
+/* Add dot container */
+
+
+
+/* Hidden text box inside the calendar day */
+.hidden-text {
+    position: absolute;
+    top: 10px; /* Position the hidden text box near the top */
+    left: 10px; /* Keep it within the box's width */
+    right: 10px; /* Ensure it doesn’t overflow */
+    bottom: 10px; /* Ensure it stays within the height of the calendar-day */
+    background-color: #ffb6c1;
+    border-radius: 8px; /* Rounded corners to match the calendar day box */
+    z-index: 1; /* Make sure it appears above other elements when revealed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+    opacity: 0; /* Start fully transparent */
+    pointer-events: none; /* Prevent interaction while hidden */
+    transition: opacity 0.3s ease; /* Smooth transition when showing */
+}
+
+/* Text area styling inside the hidden box */
+.hidden-text textarea {
+    width: 100%; /* Take up the full width of the hidden text box */
+    height: 100%; /* Take up the full height of the hidden text box */
+    font-size: 14px;
+    border: none;
+    outline: none;
+    resize: none; /* Disable resizing */
+    background-color: #ffb6c1;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
+/* Bigger Numbers Inside Calendar Day Boxes */
+.calendar-day span.day-date {
+    font-size: 60px; /* Make the date numbers much bigger */
+    font-weight: bold;
+    color: #ffb6c1; /* Date text color */
+}
+
+/* Hover Effect for Scaling the Calendar Day Box */
+.calendar-day:hover {
+    transform: scale(1.1); /* Scale up the entire box */
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly darken the box on hover */
+}
+
+.calendar-day:hover span.day-date {
+    transform: scale(1.2); /* Slightly scale up the date text */
+    color: #fff; /* Change to white on hover */
+}
+
+/* For the other elements inside the calendar-day box (dates, buttons) */
+.calendar-day span.day-name {
+    font-size: 18px;
+    color: #ccc; /* Slightly lighter color for day name */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for text */
+}
+
+.calendar-day:hover span.day-name {
+    color: #fff; /* Change the day name color when hovered */
+}
+
+/* Long Bottom Row */
+.calendar-row.long-row {
+    justify-content: center;
+}
+/* Hide the details box initially */
+.calendar-details {
+    display: none;
+}
+
+
+/* Button inside Calendar Box */
+.calendar-btn {
+    padding: 10px;
+    background-color: #ffb6c1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.calendar-btn:hover {
+    background-color: #ff88a8;
+}
+.hidden-text textarea:focus {
+    background-color: #f5f5f5; /* Keep background color unchanged */
+    box-shadow: none; /* Remove any shadow */
+    outline: none; /* Remove the default outline on focus */
+}
+.hidden {
+    display: none;
+}
+.inner-box {
+    position: absolute; /* Positioned relative to the cute-window */
+    top: 10px; /* Small boundary from the top */
+    left: 10px; /* Small boundary from the left */
+    right: 10px; /* Small boundary from the right */
+    bottom: 10px; /* Small boundary from the bottom */
+    background-color: #ffd2e4; /* Light background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2); /* Slight inner shadow for depth */
+    overflow-y: auto; /* Scrollable content */
+    padding: 20px; /* Inner padding for content */
+    color: #333; /* Dark text color for readability */
+    font-size: 16px; /* Default font size */
+}

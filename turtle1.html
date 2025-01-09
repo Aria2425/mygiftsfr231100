@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pencil Drawing Glowing Heart</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .heart-path {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .path {
+      fill: none;
+      stroke: #ff6b6b;
+      stroke-width: 4;
+      stroke-dasharray: 1050;
+      stroke-dashoffset: 1050;
+      filter: drop-shadow(0 0 10px #ff6b6b);
+      animation: draw 4s linear forwards;
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .pencil {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #f4a261, #e76f51);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: move 4s linear forwards;
+    }
+
+    .heart {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #ff6b6b;
+      border-radius: 50% 50% 0 0;
+      transform: rotate(-45deg);
+      animation: panic 0.4s infinite alternate;
+      filter: drop-shadow(0 0 20px #ff6b6b);
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #ff6b6b;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -25px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 25px;
+      top: 0;
+    }
+
+    @keyframes panic {
+      from {
+        transform: rotate(-45deg) scale(1);
+      }
+      to {
+        transform: rotate(-45deg) scale(1.2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="heart-path">
+    <svg viewBox="0 0 200 200">
+      <path
+        d="M50,100
+           C50,60 90,40 100,70
+           C110,40 150,60 150,100
+           C150,140 100,170 100,170
+           C100,170 50,140 50,100 Z"
+        class="path"
+      ></path>
+    </svg>
+    <div class="pencil"></div>
+    <div class="heart" style="display: none;"></div>
+  </div>
+  <script>
+    const pencil = document.querySelector('.pencil');
+    const path = document.querySelector('.path');
+    const heart = document.querySelector('.heart');
+
+    const pathLength = path.getTotalLength();
+
+    const updatePencilPosition = (progress) => {
+      const point = path.getPointAtLength(progress * pathLength);
+      pencil.style.left = `${point.x}px`;
+      pencil.style.top = `${point.y}px`;
+    };
+
+    const drawHeart = () => {
+      let progress = 0;
+      const interval = setInterval(() => {
+        if (progress >= 1) {
+          clearInterval(interval);
+          pencil.style.display = 'none';
+          heart.style.display = 'block';
+        } else {
+          progress += 0.01;
+          updatePencilPosition(progress);
+        }
+      }, 40);
+    };
+
+    drawHeart();
+  </script>
+</body>
+</html>

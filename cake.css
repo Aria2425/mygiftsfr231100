@@ -1,0 +1,170 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #282828;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.cake-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 90vw; /* Ensure it fits within smaller screens */
+}
+
+.audio-container {
+  margin-bottom: 20px;
+  width: 100%; /* Make it responsive */
+  max-width: 300px; /* Limit the audio player size */
+}
+
+audio {
+  background-color: #ffb6c1; /* Light pink background */
+  border-radius: 10px;
+  outline: none;
+  width: 100%; /* Make audio player responsive */
+}
+
+audio::-webkit-media-controls {
+  filter: invert(100%);
+}
+
+.cake {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Scale down on smaller screens */
+  height: auto;
+}
+
+.cake-image {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.candle {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.candle .flame {
+  position: absolute;
+  top: 75px;
+  left: -7px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 20px;
+  background: radial-gradient(circle, yellow, orange, red);
+  border-radius: 50%;
+  animation: flicker 0.2s infinite alternate;
+  transition: opacity 0.1s;
+}
+
+.candle.flicker .flame {
+  opacity: 0.5; /* Dim the flame */
+}
+
+.candle.blown-out .flame {
+  display: none; /* Hide flame when blown out */
+}
+
+button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #ffcccc;
+  border: none;
+  color: #282828;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:active {
+  background-color: #ff9999;
+}
+
+/* Steam styles */
+.steam {
+  position: absolute;
+  top: -20px; /* Start just above the candle */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  animation: rise 1.5s ease-out forwards, fadeOut 1.5s ease-out forwards;
+  pointer-events: none; /* Prevent interaction */
+}
+
+@keyframes rise {
+  0% {
+      transform: translateX(-50%) translateY(0);
+  }
+  100% {
+      transform: translateX(-50%) translateY(-50px); /* Move upward */
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0; /* Fade out completely */
+  }
+}
+
+@keyframes flicker {
+  0% {
+      transform: translate(-50%, -2px);
+      opacity: 1;
+  }
+  100% {
+      transform: translate(-50%, 2px);
+      opacity: 0.8;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  audio {
+      width: 100%; /* Take full width on small screens */
+  }
+
+  .cake {
+      max-width: 300px; /* Scale down for smaller devices */
+  }
+
+  button {
+      font-size: 14px; /* Slightly smaller text for buttons */
+      padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-container {
+      max-width: 250px; /* Ensure audio player fits smaller screens */
+  }
+
+  .cake {
+      max-width: 250px; /* Smaller cake for narrow screens */
+  }
+
+  button {
+      font-size: 12px; /* Further adjust button text size */
+      padding: 6px 12px;
+  }
+}

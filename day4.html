@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4 Page</title>
+    <link rel="stylesheet" href="day4.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>I love u so much, hope this kicks off ur birthday week amazingly</h1>
+        <a href="dashboard.html" class="menu-link"><i class="fas fa-bars"></i></a>
+    </header>
+
+    <div class="huge-text">DAY 4 - THE QUIZ</div>
+
+    <!-- Audio Player Section -->
+    <div class="audio-player">
+        <div class="audio-display">
+            <img src="day4.jpeg" alt="Cloud Art" class="audio-image">
+        </div>
+        <div class="controls">
+            <button id="prevButton" class="other-button"><i class="fas fa-backward"></i></button>
+            <button id="playButton" class="play-button"><i class="fas fa-play"></i></button>
+            <button id="pauseButton" class="play-button" style="display: none;"><i class="fas fa-pause"></i></button>
+            <button id="audioNextButton" class="other-button"><i class="fas fa-forward"></i></button>
+        </div>
+        <input type="range" class="progress-bar" min="0" max="100" value="0">
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="cute-window">
+        <div class="cute-window-header">
+            <div class="dot-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <span class="cute-window-title">QUIZ ABOUT HOW WELL U KNOW ME</span>
+        </div>
+        <div class="cute-window-body">
+            <div class="inner-box">
+                <div id="quiz-container">
+                    <p id="question-text">Question will appear here</p>
+                    <div id="options-container"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player Element -->
+    <audio id="audioPlayer" src="day4.m4a"></audio>
+
+    <!-- Script for handling quiz and audio -->
+    <script src="day4.js"></script>
+</body>
+</html>

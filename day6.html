@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6 Page</title>
+    <link rel="stylesheet" href="day6.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>I love you so much, hope this kicks off your birthday week amazingly</h1>
+        <a href="dashboard.html" class="menu-link"><i class="fas fa-bars"></i></a>
+    </header>
+
+    <div class="huge-text">DAY 6 - DATES TO REMEMBER</div>
+
+    <!-- Audio Player Section -->
+    <div class="audio-player">
+        <div class="audio-display">
+            <img src="day4.jpeg" alt="Cloud Art" class="audio-image">
+        </div>
+        <div class="controls">
+            <button id="prevButton" class="other-button"><i class="fas fa-backward"></i></button>
+            <button id="playButton" class="play-button"><i class="fas fa-play"></i></button>
+            <button id="pauseButton" class="play-button" style="display: none;"><i class="fas fa-pause"></i></button>
+            <button id="audioNextButton" class="other-button"><i class="fas fa-forward"></i></button>
+        </div>
+        <input type="range" class="progress-bar" min="0" max="100" value="0">
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="cute-window">
+        <div class="cute-window-header">
+            <div class="dot-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <span class="cute-window-title">LET'S LOOK AT THE DATES OF WHAT WE'VE PASSED</span>
+        </div>
+
+        <div class="cute-window-body">
+            <div class="calendar-container">
+                <!-- Calendar Box (Initially only the first one is visible) -->
+                <div class="calendar" id="calendar1">
+                    <div class="calendar-row">
+                        <div class="calendar-day">
+                            <div class="calendar-day-header"></div>
+                            <span class="day-date">24</span>
+                            <span class="day-name">July</span>
+                            <div class="envelope-content">
+                                <button class="cute-button" onclick="revealText(event, this)">Click</button>
+                            </div>
+                            <div class="hidden-text" style="opacity: 0; pointer-events: none;">
+                                <textarea placeholder="This was the first day we talked, who knew that me sending you a pic would lead to me falling in love"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More calendar boxes hidden initially -->
+                <div class="calendar hidden" id="calendar2">
+                    <div class="calendar-row">
+                        <div class="calendar-day">
+                            <div class="calendar-day-header"></div>
+                            <span class="day-date">1</span>
+                            <span class="day-name">December</span>
+                            <div class="envelope-content">
+                                <button class="cute-button" onclick="revealText(event, this)">Click</button>
+                            </div>
+                            <div class="hidden-text" style="opacity: 0; pointer-events: none;">
+                                <textarea placeholder="Texting you that day was so nerve-wracking. I knew you wouldn't remember me, but I couldn't forget you, so I had to do it, and I'm so glad I did."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar hidden" id="calendar3">
+                    <div class="calendar-row">
+                        <div class="calendar-day">
+                            <div class="calendar-day-header"></div>
+                            <span class="day-date">19</span>
+                            <span class="day-name">April</span>
+                            <div class="envelope-content">
+                                <button class="cute-button" onclick="revealText(event, this)">Click</button>
+                            </div>
+                            <div class="hidden-text" style="opacity: 0; pointer-events: none;">
+                                <textarea placeholder="I still remember the excitement I felt that day, you officially asking me to be your girlfriend for the first time. It was like a dream come true."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar hidden" id="calendar4">
+                    <div class="calendar-row">
+                        <div class="calendar-day">
+                            <div class="calendar-day-header"></div>
+                            <span class="day-date">25</span>
+                            <span class="day-name">May</span>
+                            <div class="envelope-content">
+                                <button class="cute-button" onclick="revealText(event, this)">Click</button>
+                            </div>
+                            <div class="hidden-text" style="opacity: 0; pointer-events: none;">
+                                <textarea placeholder="My birthday, hehe, but what made the day really special was this beautiful necklace you got me. I haven't been able to part with it since."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar hidden" id="calendar5">
+                    <div class="calendar-row">
+                        <div class="calendar-day">
+                            <div class="calendar-day-header"></div>
+                            <span class="day-date">14</span>
+                            <span class="day-name">November</span>
+                            <div class="envelope-content">
+                                <button class="cute-button" onclick="revealText(event, this)">Click</button>
+                            </div>
+                            <div class="hidden-text" style="opacity: 0; pointer-events: none;">
+                                <textarea placeholder="Our official anniversary date now, hehe. That's right, the day you finally asked me to be your girlfriend after everything we've been through. The official mark that we got over everything together and will stay together forever now."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar hidden" id="calendar6">
+                    <div class="calendar-row">
+                        <div class="calendar-day">
+                            <div class="calendar-day-header"></div>
+                            <span class="day-date">21</span>
+                            <span class="day-name">November</span>
+                            <div class="envelope-content">
+                                <button class="cute-button" onclick="revealText(event, this)">Click</button>
+                            </div>
+                            <div class="hidden-text" style="opacity: 0; pointer-events: none;">
+                                <textarea placeholder="The day you got me LEGOSSSSSS, ugh, it was one thing I had wanted more than anything but was never able to buy myself, and you fulfilled that dream for me. I'm so so so grateful."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar hidden" id="calendar7">
+                    <div class="calendar-row">
+                        <div class="calendar-day">
+                            <div class="calendar-day-header"></div>
+                            <span class="day-date">23</span>
+                            <span class="day-name">November</span>
+                            <div class="envelope-content">
+                                <button class="cute-button" onclick="revealText(event, this)">Click</button>
+                            </div>
+                            <div class="hidden-text" style="opacity: 0; pointer-events: none;">
+                                <textarea placeholder="And finally, last but definitely not the least, your big day—HAPPY BIRTHDAY, my love."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="nextCalendarButton" class="next-day-btn" onclick="showNextDate()">Next Date</button>
+        </div>
+    </div>
+
+    <!-- Audio Player Element -->
+    <audio id="audioPlayer" src="day6.m4a"></audio>
+
+    <!-- Script for handling quiz, audio, and calendar navigation -->
+    <script>
+        let currentCalendarIndex = 0; // Index to track which calendar box is currently visible
+        const calendars = document.querySelectorAll('.calendar'); // Get all calendar boxes
+
+        function showNextDate() {
+            // Hide the current calendar
+            calendars[currentCalendarIndex].classList.add('hidden');
+            
+            // Move to the next calendar (loop back to the first one if it's the last one)
+            currentCalendarIndex = (currentCalendarIndex + 1) % calendars.length;
+            
+            // Show the next calendar
+            calendars[currentCalendarIndex].classList.remove('hidden');
+        }
+
+        function revealText(event, button) {
+            const hiddenText = button.closest('.calendar-day').querySelector('.hidden-text');
+            hiddenText.style.opacity = 1;
+            hiddenText.style.pointerEvents = 'auto';
+        }
+    </script>
+    <script src="day5.js"></script>
+</body>
+</html>

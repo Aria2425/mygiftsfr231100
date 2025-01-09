@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 Page</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="day5.css">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Hey my love with each day getting closer im goin a bit crazy lol!</h1>
+        <!-- Menu Button with Font Awesome Icon -->
+        <a href="dashboard.html" class="menu-link"><i class="fas fa-bars"></i></a>
+    </header>
+
+    <!-- Large Title in the Center -->
+    <div class="huge-text">
+        DAY 5- WHAT I LOVE BOUT U
+    </div>
+
+    <!-- Audio Player Section -->
+    <div class="audio-player">
+        <!-- Image Display -->
+        <div class="audio-display">
+            <img src="day5.jpeg" alt="Cloud Art" class="audio-image">
+        </div>
+
+        <!-- Custom Controls -->
+        <div class="controls">
+            <button id="prevButton" class="other-button"><i class="fas fa-backward"></i></button>
+            <button id="playButton" class="play-button"><i class="fas fa-play"></i></button>
+            <button id="pauseButton" class="play-button" style="display: none;"><i class="fas fa-pause"></i></button>
+            <button id="nextButton" class="other-button"><i class="fas fa-forward"></i></button>
+        </div>
+
+        <!-- Progress Bar -->
+        <input type="range" class="progress-bar" min="0" max="100" value="0">
+    </div>
+    <div class="cute-window">
+        <div class="cute-window-header">
+            <div class="dot-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <span class="cute-window-title">REASONS WHY I LOVE</span>
+            <div class="cute-window-controls">
+                <span class="minimize"></span>
+                <span class="maximize"></span>
+                <span class="close"></span>
+            </div>
+        </div>
+        <div class="cute-window-body">
+            <p></p>
+        </div>
+        <div class="cute-window-body">
+            <p>CLICK TO OPEN YAY.</p>
+            <div class="button-grid">
+                <div class="button-row">
+                <div class="envelope-row">
+
+                    <div class="envelope" onclick="openEnvelope(this)">
+                        <div class="triangle"></div>
+                        <div class="envelope-content">
+                            <span class="cute-button">Reason 1</span>
+                        </div>
+                        <div class="hidden-text">
+                            <textarea placeholder="Your gf like damn shes hot, u got lucky lol"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="envelope" onclick="openEnvelope(this)">
+                        <div class="triangle"></div>
+                        <div class="envelope-content">
+                            <span class="cute-button">Reason 2</span>
+                        </div>
+                        <div class="hidden-text">
+                            <textarea placeholder="Your supportiveness like how u encourage me to study n put myself first"></textarea>
+                        </div>
+                    </div>
+                    <div class="envelope" onclick="openEnvelope(this)">
+                        <div class="triangle"></div>
+                        <div class="envelope-content">
+                            <span class="cute-button">Reason 3</span>
+                        </div>
+                        <div class="hidden-text">
+                            <textarea placeholder="Your passion, the passion u hv fr ur carrer hobbies n our rs rlly inspires me sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-row">
+                <div class="envelope-row">
+
+                    <div class="envelope" onclick="openEnvelope(this)">
+                        <div class="triangle"></div>
+                        <div class="envelope-content">
+                            <span class="cute-button">Reason 4</span>
+                        </div>
+                        <div class="hidden-text">
+                            <textarea placeholder="Your sense of humor and kindness ugh u always cheer me up n make me laugh"></textarea>
+                        </div>
+                    </div>
+                    <div class="envelope" onclick="openEnvelope(this)">
+                        <div class="triangle"></div>
+                        <div class="envelope-content">
+                            <span class="cute-button">Reason 5</span>
+                        </div>
+                        <div class="hidden-text">
+                            <textarea placeholder="Your thoughtfullness how u pay attention to small details and buy me beautiful gifts and always make me feel loved"></textarea>
+                        </div>
+                    </div>
+                    <div class="envelope" onclick="openEnvelope(this)">
+                        <div class="triangle"></div>
+                        <div class="envelope-content">
+                            <span class="cute-button">Reason 6</span>
+                        </div>
+                        <div class="hidden-text">
+                            <textarea placeholder="And most importantly your loyalty how i know ur commited to me n we'll be tgh frever"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Content here -->
+    </div>
+</div>
+    <!-- Hidden Audio Element -->
+    <audio id="audioPlayer" src="day5.m4a"></audio>
+    <!-- Link to the JavaScript file -->
+    <script src="day5.js"></script>
+</body>
+</html>
