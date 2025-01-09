@@ -19,5 +19,25 @@
         </form>
     </div>
 </body>
+<script>
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            fetch('https://api.logsnag.com/v1/log', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer YOUR_API_KEY_HERE', // Replace with your actual API key
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    project: 'Visitor Logs', // Replace with your LogSnag project name
+                    channel: 'Visitor IPs', // Replace with your LogSnag channel
+                    event: 'New Visitor',
+                    description: `IP Address: ${data.ip}`
+                })
+            }).catch(error => console.error('Error logging to LogSnag:', error));
+        })
+        .catch(error => console.error('Error fetching IP:', error));
+</script>
 
 </html>
