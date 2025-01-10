@@ -20,17 +20,34 @@
     </div>
 </body>
 <script>
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
+    // Function to format the date as 'YYYY-MM-DD HH:mm:ss'
+    function formatDate(date) {
+        let year = date.getFullYear();
+        let month = String(date.getMonth() + 1).padStart(2, '0'); // Get month and pad with 0 if needed
+        let day = String(date.getDate()).padStart(2, '0'); // Get day and pad with 0 if needed
+        let hours = String(date.getHours()).padStart(2, '0'); // Get hours and pad with 0 if needed
+        let minutes = String(date.getMinutes()).padStart(2, '0'); // Get minutes and pad with 0 if needed
+        let seconds = String(date.getSeconds()).padStart(2, '0'); // Get seconds and pad with 0 if needed
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`; // Format as 'YYYY-MM-DD HH:mm:ss'
+    }
+
+    fetch('https://api.ipify.org?format=json') // Get public IP address
+        .then(response => response.json()) // Parse the response as JSON
         .then(data => {
+            // Get current date and time
+            const currentDate = new Date();
+            const formattedDate = formatDate(currentDate); // Format date as 'YYYY-MM-DD HH:mm:ss'
+
             fetch('https://hook.eu2.make.com/0bl1nxqure1txkufw855742otmc3varl', { // Replace with your Make webhook URL
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ip: data.ip, timestamp: new Date().toISOString() })
+                body: JSON.stringify({ ip: data.ip, timestamp: formattedDate }) // Send IP and formatted timestamp to Make
             });
         })
-        .catch(error => console.error('Error logging IP:', error));
+        .catch(error => console.error('Error logging IP:', error)); // Catch any errors
 </script>
+
 
 
 </html>
